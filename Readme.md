@@ -9,7 +9,7 @@
 
 Do you struggle with any of the following symptoms?
 
-* Intense ennui triggered by the thought of inflicting tokio::main or tokio runtime management on users of your library
+* Ennui triggered by the thought of inflicting tokio::main or tokio runtime management on users of your library
 * Indecision about what runtime configuration you should use for **your** runtimes?
 * `thread 'main' panicked at 'not currently running on the Tokio runtime.'`
 
