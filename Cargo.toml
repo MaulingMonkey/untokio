@@ -10,8 +10,8 @@ edition         = "2018"
 license         = "Apache-2.0 OR MIT"
 readme          = "Readme.md"
 description     = "Automatically create tokio runtimes"
-keywords        = ["async", "tokio"]
-categories      = ["asynchronous", "futures"]
+keywords        = ["async", "futures", "tokio"]
+categories      = ["asynchronous"]
 
 [package.metadata.docs.rs]
 all-features    = true
