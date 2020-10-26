@@ -1,0 +1,45 @@
+# https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name            = "untokio"
+version         = "0.0.0-git"
+authors         = ["MaulingMonkey <git@maulingmonkey.com>"]
+repository      = "https://github.com/MaulingMonkey/untokio"
+documentation   = "https://docs.rs/untokio/"
+edition         = "2018"
+license         = "Apache-2.0 OR MIT"
+readme          = "Readme.md"
+description     = "Automatically create tokio runtimes"
+keywords        = ["async", "tokio"]
+categories      = ["asynchronous", "futures"]
+
+[package.metadata.docs.rs]
+all-features    = true
+targets         = []
+
+[features]
+default         = []
+v02             = ["tokio02"]
+v03             = ["tokio03"]
+
+[dependencies]
+# tokio01         = { package = "tokio", version = "0.1", optional = true, features = ["rt-full"], default-features = false }
+tokio02         = { package = "tokio", version = "0.2", optional = true, features = ["rt-threaded"] }
+tokio03         = { package = "tokio", version = "0.3", optional = true, features = ["rt-multi-thread"] }
+lazy_static     = "1"
+
+[dev-dependencies]
+futures         = "0.3"
+# reqwest09       = { package = "reqwest", version = "0.9"  } # tokio 0.1
+reqwest010      = { package = "reqwest", version = "0.10" } # tokio 0.2
+tokio03         = { package = "tokio", version = "0.3", features = ["rt-multi-thread", "fs"] }
+
+
+
+[[example]]
+name = "example02"
+required-features = ["v02"]
+
+[[example]]
+name = "example03"
+required-features = ["v03"]
