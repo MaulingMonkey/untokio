@@ -6,7 +6,7 @@ use tokio::runtime::{Builder, Handle, Runtime};
 use tokio::task::JoinHandle;
 
 use std::future::Future;
-use std::sync::{Mutex, MutexGuard};
+use std::sync::{Mutex, RwLock, RwLockReadGuard};
 
 struct Common {
     used_runtime:   bool,
@@ -19,10 +19,10 @@ lazy_static::lazy_static! {
         runtime:        None,
     });
 
-    static ref RUNTIME : Mutex<Runtime> = {
+    static ref RUNTIME : RwLock<Runtime> = {
         let mut c = COMMON.lock().expect("unable to lock untokio::v02::COMMON");
         c.used_runtime = true;
-        Mutex::new(c.runtime.take().unwrap_or_else(|| Builder::new()
+        RwLock::new(c.runtime.take().unwrap_or_else(|| Builder::new()
             .enable_all()
             .threaded_scheduler()
             .thread_name("untokio::v02")
@@ -45,8 +45,8 @@ pub fn current() -> Handle {
 }
 
 /// Get untokio's [Runtime]
-pub fn runtime() -> MutexGuard<'static, Runtime> {
-    RUNTIME.lock().expect("unable to lock untokio::v02::RUNTIME")
+pub fn runtime() -> RwLockReadGuard<'static, Runtime> {
+    RUNTIME.read().expect("unable to lock untokio::v02::RUNTIME")
 }
 
 /// Provide a [Runtime] instead of letting untokio create its own.
