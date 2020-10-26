@@ -35,7 +35,14 @@ lazy_static::lazy_static! {
 }
 
 /// Get a [Handle] for untokio's [Runtime]
-pub fn handle() -> &'static Handle { &*HANDLE }
+pub fn handle() -> &'static Handle {
+    &*HANDLE
+}
+
+/// Get a [Handle] for tokio - either the from tokio's [Handle::try_current] or from untokio's [handle]
+pub fn current() -> Handle {
+    Handle::try_current().unwrap_or_else(|_| HANDLE.clone())
+}
 
 /// Get untokio's [Runtime]
 pub fn runtime() -> MutexGuard<'static, Runtime> {
@@ -67,5 +74,5 @@ pub fn set_runtime(runtime: Runtime) {
 
 /// Spawns a new asynchronous task, returning a [JoinHandle] for it.
 pub fn spawn<F>(future: F) -> JoinHandle<F::Output> where F : Future + Send + 'static, F::Output : Send + 'static {
-    handle().spawn(future)
+    current().spawn(future)
 }
