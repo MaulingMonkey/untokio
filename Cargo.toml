@@ -2,7 +2,7 @@
 
 [package]
 name            = "untokio"
-version         = "0.0.0-git"
+version         = "0.1.0"
 authors         = ["MaulingMonkey <git@maulingmonkey.com>"]
 repository      = "https://github.com/MaulingMonkey/untokio"
 documentation   = "https://docs.rs/untokio/"
