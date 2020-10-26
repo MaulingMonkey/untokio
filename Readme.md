@@ -32,7 +32,7 @@ untokio::v02::spawn(async {
 
 ```toml
 [dependencies]
-untokio = { version = "0.1", features = ["v02"] }
+untokio = { version = "0.1", features = ["v03"] }
 ```
 ```rust
 untokio::v03::spawn(async{
