@@ -4,7 +4,7 @@
 [![crates.io](https://img.shields.io/crates/v/untokio.svg)](https://crates.io/crates/untokio)
 [![docs.rs](https://docs.rs/untokio/badge.svg)](https://docs.rs/untokio)
 [![License](https://img.shields.io/crates/l/untokio.svg)](https://github.com/MaulingMonkey/untokio)
-[![Build Status](https://travis-ci.com/MaulingMonkey/untokio.svg?branch=master)](https://travis-ci.com/MaulingMonkey/untokio)
+[![Build Status](https://github.com/MaulingMonkey/untokio/workflows/Rust/badge.svg)](https://github.com/MaulingMonkey/untokio/actions?query=workflow%3Arust)
 <!-- [![dependency status](https://deps.rs/repo/github/MaulingMonkey/untokio/status.svg)](https://deps.rs/repo/github/MaulingMonkey/untokio) -->
 
 Do you struggle with any of the following symptoms?
