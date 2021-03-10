@@ -19,7 +19,7 @@ Struggle no more, with `untokio`!  `untokio` will automatically create a runtime
 
 ```toml
 [dependencies]
-untokio = { version = "0.1", features = ["v02"] }
+untokio = { version = "0.2", features = ["v02"] }
 ```
 ```rust
 untokio::v02::spawn(async {
@@ -32,7 +32,7 @@ untokio::v02::spawn(async {
 
 ```toml
 [dependencies]
-untokio = { version = "0.1", features = ["v03"] }
+untokio = { version = "0.2", features = ["v03"] }
 ```
 ```rust
 untokio::v03::spawn(async{
