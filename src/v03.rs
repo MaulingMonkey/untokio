@@ -1,4 +1,19 @@
 //! <code>tokio = "[0.3](https://docs.rs/tokio/0.3/)"</code> ● **[spawn]**, [runtime], [try_set_runtime], [set_runtime]
+//!
+//! ### Example
+//!
+//! ```rust
+//! mod library {
+//!     pub async fn read() -> Result<String, std::io::Error> {
+//!         untokio::v03::spawn(async{
+//!             tokio03::fs::read_to_string("Cargo.toml").await
+//!         }).await.unwrap()
+//!     }
+//! }
+//!
+//! println!("{}", futures::executor::block_on(library::read()).unwrap());
+//! ```
+
 #![cfg(feature = "v03")]
 
 use tokio03 as tokio;
