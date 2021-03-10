@@ -27,7 +27,7 @@ v1              = ["tokio1"]
 # tokio01         = { package = "tokio", version = "0.1", optional = true, features = ["rt-full"], default-features = false }
 tokio02         = { package = "tokio", version = "0.2", optional = true, features = ["rt-threaded"] }
 tokio03         = { package = "tokio", version = "0.3", optional = true, features = ["rt-multi-thread"] }
-tokio1          = { package = "tokio", version = "1.0", optional = true, features = ["rt-multi-thread"] }
+tokio1          = { package = "tokio", version = "1",   optional = true, features = ["rt-multi-thread"] }
 lazy_static     = "1"
 
 [dev-dependencies]
@@ -36,7 +36,7 @@ futures         = "0.3"
 reqwest010      = { package = "reqwest", version = "0.10" } # tokio 0.2
 tokio02         = { package = "tokio", version = "0.2", features = ["macros"] }
 tokio03         = { package = "tokio", version = "0.3", features = ["macros", "rt-multi-thread", "fs"] }
-tokio1          = { package = "tokio", version = "1.0", features = ["macros", "rt-multi-thread", "fs"] }
+tokio1          = { package = "tokio", version = "1",   features = ["macros", "rt-multi-thread", "fs"] }
 
 
 [[example]]
