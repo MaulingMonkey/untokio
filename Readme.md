@@ -41,6 +41,19 @@ untokio::v03::spawn(async{
 }).await.unwrap()
 ```
 
+## [example](examples/example1.rs): tokio = "1"
+
+```toml
+[dependencies]
+untokio = { version = "0.2", features = ["v1"] }
+```
+```rust
+untokio::v1::spawn(async{
+    // code requiring a tokio 1.x runtime
+    tokio::fs::read_to_string("Cargo.toml").await
+}).await.unwrap()
+```
+
 
 
 <h2 name="license">License</h2>
