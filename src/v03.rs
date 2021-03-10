@@ -20,20 +20,20 @@ lazy_static::lazy_static! {
     });
 
     static ref RUNTIME : RwLock<Runtime> = {
-        let mut c = COMMON.lock().expect("unable to lock untokio::v01::COMMON");
+        let mut c = COMMON.lock().expect("unable to lock untokio::v03::COMMON");
         c.used_runtime = true;
         RwLock::new(c.runtime.take().unwrap_or_else(|| Builder::new_multi_thread()
             .enable_all()
             .thread_name("untokio::v03")
             .build()
-            .expect("unable to create untokio::v01::RUNTIME")
+            .expect("unable to create untokio::v03::RUNTIME")
         ))
     };
 }
 
 /// Get untokio's [Runtime]
 pub fn runtime() -> RwLockReadGuard<'static, Runtime> {
-    RUNTIME.read().expect("unable to lock untokio::v01::RUNTIME")
+    RUNTIME.read().expect("unable to lock untokio::v03::RUNTIME")
 }
 
 /// Provide a [Runtime] instead of letting untokio create its own.
@@ -43,8 +43,8 @@ pub fn runtime() -> RwLockReadGuard<'static, Runtime> {
 /// * If the common lock is poisoned
 /// * The runtime is already in use
 pub fn try_set_runtime(runtime: Runtime) -> Result<(), &'static str> {
-    let mut c = COMMON.lock().map_err(|_| "unable to lock untokio::v01::COMMON")?;
-    if c.used_runtime { return Err("untokio::v01::RUNTIME already in use"); }
+    let mut c = COMMON.lock().map_err(|_| "unable to lock untokio::v03::COMMON")?;
+    if c.used_runtime { return Err("untokio::v03::RUNTIME already in use"); }
     c.runtime = Some(runtime);
     Ok(())
 }
